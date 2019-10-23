@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                         updateTextView();
                         break;
                     case R.id.dot:
-                        if(checkInput('.')) {
+                        if(!checkInput('.')) {
                             checkIfCalculated();
                             if (mathEquation == "") {
                                 mathEquation += "0.";
@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                         break;
                     case R.id.equals:
-                        if(checkInput('=')) {
+                        if(!checkInput('=')) {
                             checkIfCalculated();
                             mathEquation = calculatorLogic.calculate(mathEquation);
                             updateTextView();
@@ -115,28 +115,28 @@ public class MainActivity extends AppCompatActivity {
                         }
                         break;
                     case R.id.addition:
-                        if(checkInput('+')) {
+                        if(!checkInput('+')) {
                             checkIfCalculated();
                             mathEquation += " + ";
                             updateTextView();
                         }
                         break;
                     case R.id.subtraction:
-                        if(checkInput('-')) {
+                        if(!checkInput('-')) {
                             checkIfCalculated();
                             mathEquation += " - ";
                             updateTextView();
                         }
                         break;
                     case R.id.multiplication:
-                        if(checkInput('*')) {
+                        if(!checkInput('*')) {
                             checkIfCalculated();
                             mathEquation += " * ";
                             updateTextView();
                         }
                         break;
                     case R.id.division:
-                        if(checkInput('/')) {
+                        if(!checkInput('/')) {
                             checkIfCalculated();
                             mathEquation += " / ";
                             updateTextView();
@@ -175,7 +175,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public boolean checkInput(char operation){
-        boolean repeatedOperation = mathEquation.charAt(mathEquation.length()-1) == operation;
+        System.out.println(mathEquation.charAt(mathEquation.length()-1) + "operation value: " + operation + " ************************");
+        boolean repeatedOperation = mathEquation.charAt(mathEquation.length()-2) == operation;
         return repeatedOperation;
     }
 }
