@@ -76,7 +76,7 @@
             android:text="6"
             android:textSize="25sp" />
         <Button
-            android:id="@+id/muliplication"
+            android:id="@+id/multiplication"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -127,7 +127,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/."
+            android:id="@+id/dot"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
