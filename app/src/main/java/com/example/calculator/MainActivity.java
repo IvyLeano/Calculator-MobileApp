@@ -1,6 +1,8 @@
 package com.example.calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Button;
 import android.os.Bundle;
@@ -29,5 +31,79 @@ public class MainActivity extends AppCompatActivity {
         final Button subtraction = findViewById(R.id.subtraction);
         final Button multiplication = findViewById(R.id.multiplication);
         final Button division = findViewById(R.id.division);
+
+        final View.OnClickListener calculatorListener = new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                final int id = v.getId();
+
+                switch(id) {
+                    case R.id.n0:
+                        System.out.println("button 0 pressed");
+                        break;
+                    case R.id.n1:
+
+                        break;
+                    case R.id.n2:
+
+                        break;
+                    case R.id.n3:
+
+                        break;
+                    case R.id.n4:
+
+                        break;
+                    case R.id.n5:
+
+                        break;
+                    case R.id.n6:
+
+                        break;
+                    case R.id.n7:
+
+                        break;
+                    case R.id.n8:
+
+                        break;
+                    case R.id.n9:
+
+                        break;
+                    case R.id.dot:
+
+                        break;
+                    case R.id.equals:
+
+                        break;
+                    case R.id.addition:
+
+                        break;
+                    case R.id.subtraction:
+
+                        break;
+                    case R.id.multiplication:
+
+                        break;
+                    case R.id.division:
+
+                        break;
+                }
+            }
+        };
+        n0.setOnClickListener(calculatorListener);
+        n1.setOnClickListener(calculatorListener);
+        n2.setOnClickListener(calculatorListener);
+        n3.setOnClickListener(calculatorListener);
+        n4.setOnClickListener(calculatorListener);
+        n5.setOnClickListener(calculatorListener);
+        n6.setOnClickListener(calculatorListener);
+        n7.setOnClickListener(calculatorListener);
+        n8.setOnClickListener(calculatorListener);
+        n9.setOnClickListener(calculatorListener);
+        dot.setOnClickListener(calculatorListener);
+        equals.setOnClickListener(calculatorListener);
+        addition.setOnClickListener(calculatorListener);
+        subtraction.setOnClickListener(calculatorListener);
+        multiplication.setOnClickListener(calculatorListener);
+        division.setOnClickListener(calculatorListener);
     }
 }
