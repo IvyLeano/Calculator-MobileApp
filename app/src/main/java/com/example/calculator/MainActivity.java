@@ -8,9 +8,10 @@ import android.widget.Button;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
-    Double total = 0.00;  //total calculated value
     String mathEquation = "";  //the mathematical equation in string form
     TextView calculatorScreen = null;
+    CalculatorLogic calculatorLogic = new CalculatorLogic();
+    boolean answered = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,85 +43,106 @@ public class MainActivity extends AppCompatActivity {
 
                 switch(id) {
                     case R.id.n0:
+                        checkIfCalculated();
                         if(mathEquation != ""){
                             mathEquation+= "0";
                         }
                         updateTextView();
                         break;
                     case R.id.n1:
+                        checkIfCalculated();
                         mathEquation+= "1";
                         updateTextView();
                         break;
                     case R.id.n2:
+                        checkIfCalculated();
                         mathEquation+= "2";
                         updateTextView();
                         break;
                     case R.id.n3:
+                        checkIfCalculated();
                         mathEquation+= "3";
                         updateTextView();
                         break;
                     case R.id.n4:
+                        checkIfCalculated();
                         mathEquation+= "4";
                         updateTextView();
                         break;
                     case R.id.n5:
+                        checkIfCalculated();
                         mathEquation+= "5";
                         updateTextView();
                         break;
                     case R.id.n6:
+                        checkIfCalculated();
                         mathEquation+= "6";
                         updateTextView();
                         break;
                     case R.id.n7:
+                        checkIfCalculated();
                         mathEquation+= "7";
                         updateTextView();
                         break;
                     case R.id.n8:
+                        checkIfCalculated();
                         mathEquation+= "8";
                         updateTextView();
                         break;
                     case R.id.n9:
+                        checkIfCalculated();
                         mathEquation+= "9";
                         updateTextView();
                         break;
                     case R.id.dot:
-                        if(mathEquation == ""){
-                            mathEquation+= "0.";
+                        if(checkInput('.')) {
+                            checkIfCalculated();
+                            if (mathEquation == "") {
+                                mathEquation += "0.";
+                            } else {
+                                mathEquation += ".";
+                            }
+                            updateTextView();
+                            checkIfCalculated();
                         }
-                        else {
-                            mathEquation+= ".";
-                        }
-                        updateTextView();
                         break;
                     case R.id.equals:
-                        System.out.println("***************************************************");
-                        mathEquation+= " = ";
-                        updateTextView();
-                        calculate();
+                        if(checkInput('=')) {
+                            checkIfCalculated();
+                            mathEquation = calculatorLogic.calculate(mathEquation);
+                            updateTextView();
+                            answered = true;
+                        }
                         break;
                     case R.id.addition:
-                        mathEquation+= " + ";
-//                        addition();
-                        updateTextView();
+                        if(checkInput('+')) {
+                            checkIfCalculated();
+                            mathEquation += " + ";
+                            updateTextView();
+                        }
                         break;
                     case R.id.subtraction:
-                        mathEquation+= " - ";
-//                        subtraction();
-                        updateTextView();
+                        if(checkInput('-')) {
+                            checkIfCalculated();
+                            mathEquation += " - ";
+                            updateTextView();
+                        }
                         break;
                     case R.id.multiplication:
-                        mathEquation+= " * ";
-//                        multiplication();
-                        updateTextView();
+                        if(checkInput('*')) {
+                            checkIfCalculated();
+                            mathEquation += " * ";
+                            updateTextView();
+                        }
                         break;
                     case R.id.division:
-                        mathEquation+= " / ";
-//                        division();
-                        updateTextView();
+                        if(checkInput('/')) {
+                            checkIfCalculated();
+                            mathEquation += " / ";
+                            updateTextView();
+                        }
                         break;
                 }
-
-                System.out.println("mathEquation: " + mathEquation);
             }
         };
         n0.setOnClickListener(calculatorListener);
@@ -143,29 +165,17 @@ public class MainActivity extends AppCompatActivity {
     public void updateTextView() {
         calculatorScreen.setText(mathEquation);
     }
-    public void calculate() {
-        System.out.println("in calculate");
-        for(int i = 0; i < mathEquation.length(); i++){
-            char ch1 = mathEquation.charAt(i);
-            System.out.println("index: " + i + ", value: " + ch1);
-        }
-
-        clearString();
-//        mathEquation+= "= " + total.toString();
-    }
-    public void addition() {
-
-    }
-    public void subtraction() {
-//        mathEquation+= " - ";
-    }
-    public void multiplication() {
-//        mathEquation+= " * ";
-    }
-    public void division() {
-//        mathEquation+= " / ";
-    }
     public void clearString() {
-//        mathEquation = "";
+        mathEquation = "";
+    }
+    public  void checkIfCalculated(){
+        if(answered){
+            clearString();
+            answered = false;
+        }
+    }
+    public boolean checkInput(char operation){
+        boolean repeatedOperation = mathEquation.charAt(mathEquation.length()-1) == operation;
+        return repeatedOperation;
     }
 }
