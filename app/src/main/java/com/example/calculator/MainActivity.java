@@ -1,19 +1,22 @@
 package com.example.calculator;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Button;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
+    Double total = 0.00;  //total calculated value
+    String mathEquation = "";  //the mathematical equation in string form
+    TextView calculatorScreen = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final TextView calculatorScreen = findViewById(R.id.calculatorScreen);
+        calculatorScreen = findViewById(R.id.calculatorScreen);
 
         final Button n0 = findViewById(R.id.n0);
         final Button n1 = findViewById(R.id.n1);
@@ -39,54 +42,85 @@ public class MainActivity extends AppCompatActivity {
 
                 switch(id) {
                     case R.id.n0:
-                        System.out.println("button 0 pressed");
+                        if(mathEquation != ""){
+                            mathEquation+= "0";
+                        }
+                        updateTextView();
                         break;
                     case R.id.n1:
-
+                        mathEquation+= "1";
+                        updateTextView();
                         break;
                     case R.id.n2:
-
+                        mathEquation+= "2";
+                        updateTextView();
                         break;
                     case R.id.n3:
-
+                        mathEquation+= "3";
+                        updateTextView();
                         break;
                     case R.id.n4:
-
+                        mathEquation+= "4";
+                        updateTextView();
                         break;
                     case R.id.n5:
-
+                        mathEquation+= "5";
+                        updateTextView();
                         break;
                     case R.id.n6:
-
+                        mathEquation+= "6";
+                        updateTextView();
                         break;
                     case R.id.n7:
-
+                        mathEquation+= "7";
+                        updateTextView();
                         break;
                     case R.id.n8:
-
+                        mathEquation+= "8";
+                        updateTextView();
                         break;
                     case R.id.n9:
-
+                        mathEquation+= "9";
+                        updateTextView();
                         break;
                     case R.id.dot:
-
+                        if(mathEquation == ""){
+                            mathEquation+= "0.";
+                        }
+                        else {
+                            mathEquation+= ".";
+                        }
+                        updateTextView();
                         break;
                     case R.id.equals:
-
+                        System.out.println("***************************************************");
+                        mathEquation+= " = ";
+                        updateTextView();
+                        calculate();
                         break;
                     case R.id.addition:
-
+                        mathEquation+= " + ";
+//                        addition();
+                        updateTextView();
                         break;
                     case R.id.subtraction:
-
+                        mathEquation+= " - ";
+//                        subtraction();
+                        updateTextView();
                         break;
                     case R.id.multiplication:
-
+                        mathEquation+= " * ";
+//                        multiplication();
+                        updateTextView();
                         break;
                     case R.id.division:
-
+                        mathEquation+= " / ";
+//                        division();
+                        updateTextView();
                         break;
                 }
+
+                System.out.println("mathEquation: " + mathEquation);
             }
         };
         n0.setOnClickListener(calculatorListener);
@@ -105,5 +139,33 @@ public class MainActivity extends AppCompatActivity {
         subtraction.setOnClickListener(calculatorListener);
         multiplication.setOnClickListener(calculatorListener);
         division.setOnClickListener(calculatorListener);
+    }
+    public void updateTextView() {
+        calculatorScreen.setText(mathEquation);
+    }
+    public void calculate() {
+        System.out.println("in calculate");
+        for(int i = 0; i < mathEquation.length(); i++){
+            char ch1 = mathEquation.charAt(i);
+            System.out.println("index: " + i + ", value: " + ch1);
+        }
+
+        clearString();
+//        mathEquation+= "= " + total.toString();
+    }
+    public void addition() {
+
+    }
+    public void subtraction() {
+//        mathEquation+= " - ";
+    }
+    public void multiplication() {
+//        mathEquation+= " * ";
+    }
+    public void division() {
+//        mathEquation+= " / ";
+    }
+    public void clearString() {
+//        mathEquation = "";
     }
 }
