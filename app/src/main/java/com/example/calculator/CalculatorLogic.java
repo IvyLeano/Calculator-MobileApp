@@ -1,41 +1,40 @@
 package com.example.calculator;
 
-// This class contains all the logic for a basic calculator application
-// No B.E.D.M.A.S.S functionality included, calculations are done
+// This class contains logic for a basic calculator application
+// B.E.D.M.A.S functionality not included
 public class CalculatorLogic {
-    Double total = 0.00;  //total calculated value
+    private Double total = 0.00;  //total calculated value
 
+    //Functions that set the 'total' value
+    public void addition(Double value) {
+        total += value;
+    }
+    public void subtraction(Double value) {
+        total -= value;
+    }
+    public void multiplication(Double value) {
+        total *= value;
+    }
+    public void division(Double value) {
+        total /= value;
+    }
+    //This function returns the 'total' value in string form
     public String equal(String mathEquation) {
+        //Separates string by spaces
         String[] splitMathEquation = mathEquation.split("\\s+");
         total = Double.valueOf(splitMathEquation[0]);
-
-        for(int i = 1; i < splitMathEquation.length; i+=2){
-            if(splitMathEquation[i].equals("+")){
+        //Every second index is an operation
+        for (int i = 1; i < splitMathEquation.length; i += 2) {
+            if (splitMathEquation[i].equals("+")) {
                 addition(Double.valueOf(splitMathEquation[i + 1]));
-            }
-            else if(splitMathEquation[i].equals("-")){
+            } else if (splitMathEquation[i].equals("-")) {
                 subtraction(Double.valueOf(splitMathEquation[i + 1]));
-            }
-            else if(splitMathEquation[i].equals("*")){
+            } else if (splitMathEquation[i].equals("*")) {
                 multiplication(Double.valueOf(splitMathEquation[i + 1]));
-            }
-            else {
+            } else {
                 division(Double.valueOf(splitMathEquation[i + 1]));
             }
         }
         return total.toString();
     }
-    public void addition(Double value) {
-        total+=value;
-    }
-    public void subtraction(Double value) {
-        total-=value;
-    }
-    public void multiplication(Double value) {
-        total*=value;
-    }
-    public void division(Double value) {
-        total/=value;
-    }
-
 }
