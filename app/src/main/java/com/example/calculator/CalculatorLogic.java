@@ -24,7 +24,8 @@ public class CalculatorLogic {
         String[] splitMathEquation = mathEquation.split("\\s+");
         total = Double.valueOf(splitMathEquation[0]);
         //Every second index is an operation
-        for (int i = 1; i < splitMathEquation.length; i += 2) {
+        //setting 'splitMathEquation.length - 2' prevents out of bound indexes from being accessed
+        for (int i = 1; i < splitMathEquation.length - 2; i += 2) {
             if (splitMathEquation[i].equals("+")) {
                 addition(Double.valueOf(splitMathEquation[i + 1]));
             } else if (splitMathEquation[i].equals("-")) {

@@ -14,12 +14,26 @@ public class InputValidation {
         }
         return isOperationValid;
     }
+    //To be considered a valid equation it must contain at least 3 values,
+    //one of which should be an operation
+    public boolean isEquationValid(String mathEquation){
+        boolean validEquation = false;
+        if(!isEmpty(mathEquation)) {
+            String[] splitMathEquation = mathEquation.split("\\s+");
+            boolean validLength = splitMathEquation.length >= 3;
+            boolean hasOperation = mathEquation.indexOf(' ') != -1;
+            if(validLength && hasOperation){ validEquation = true; }
+        }
+        return validEquation;
+    }
     //Returns the formatted string for decimals entered
     public String formatDecimalInput(String mathEquation){
         String formattedDecimal = "";
-        boolean isLastInputAnOperation = getCharAtLastIndex(mathEquation) == ' ';
 
-        if(isEmpty(mathEquation) || isLastInputAnOperation){
+        if(isEmpty(mathEquation)){
+            formattedDecimal = "0.";
+        }
+        else if(getCharAtLastIndex(mathEquation) == ' '){
             formattedDecimal = "0.";
         }
         else if(isDecimalInputValid(mathEquation)){
