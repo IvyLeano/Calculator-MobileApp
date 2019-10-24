@@ -10,21 +10,32 @@ public class CalculatorLogic {
         total = Double.valueOf(splitMathEquation[0]);
 
         for(int i = 1; i < splitMathEquation.length; i+=2){
-
+            if(splitMathEquation[i].equals("+")){
+                addition(Double.valueOf(splitMathEquation[i + 1]));
+            }
+            else if(splitMathEquation[i].equals("-")){
+                subtraction(Double.valueOf(splitMathEquation[i + 1]));
+            }
+            else if(splitMathEquation[i].equals("*")){
+                multiplication(Double.valueOf(splitMathEquation[i + 1]));
+            }
+            else {
+                division(Double.valueOf(splitMathEquation[i + 1]));
+            }
         }
-        return "equal button hit";
+        return total.toString();
     }
-    public void addition() {
-
+    public void addition(Double value) {
+        total+=value;
     }
-    public void subtraction() {
-
+    public void subtraction(Double value) {
+        total-=value;
     }
-    public void multiplication() {
-
+    public void multiplication(Double value) {
+        total*=value;
     }
-    public void division() {
-
+    public void division(Double value) {
+        total/=value;
     }
 
 }
