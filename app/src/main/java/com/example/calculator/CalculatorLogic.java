@@ -1,15 +1,12 @@
 package com.example.calculator;
 
+// This class contains all the logic for a basic calculator application
+// No B.E.D.M.A.S.S functionality included, calculations are done  
 public class CalculatorLogic {
     Double total = 0.00;  //total calculated value
 
-    public String calculate(String mathEquation) {
-        System.out.println("in calculate");
-        for(int i = 0; i < mathEquation.length(); i++){
-            char ch1 = mathEquation.charAt(i);
-            System.out.println("index: " + i + ", value: " + ch1);
-        }
-        return "done ";
+    public String equal(String mathEquation) {
+        return "equal button hit";
     }
     public void addition() {
 
