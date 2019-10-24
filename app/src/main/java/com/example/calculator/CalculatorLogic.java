@@ -1,9 +1,8 @@
 package com.example.calculator;
 
 // This class contains logic for a basic calculator application
-// B.E.D.M.A.S functionality not included
 public class CalculatorLogic {
-    private Double total = 0.00;  //total calculated value
+    Double total = 0.00;  //total calculated value
 
     //Functions that set the 'total' value
     public void addition(Double value) {
@@ -24,8 +23,7 @@ public class CalculatorLogic {
         String[] splitMathEquation = mathEquation.split("\\s+");
         total = Double.valueOf(splitMathEquation[0]);
         //Every second index is an operation
-        //setting 'splitMathEquation.length - 2' prevents out of bound indexes from being accessed
-        for (int i = 1; i < splitMathEquation.length - 2; i += 2) {
+        for (int i = 1; i < splitMathEquation.length - 1; i += 2) {
             if (splitMathEquation[i].equals("+")) {
                 addition(Double.valueOf(splitMathEquation[i + 1]));
             } else if (splitMathEquation[i].equals("-")) {

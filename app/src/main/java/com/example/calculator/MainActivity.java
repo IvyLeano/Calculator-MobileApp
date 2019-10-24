@@ -77,7 +77,9 @@ public class MainActivity extends AppCompatActivity {
                         mathEquation+=inputValidation.formatDecimalInput(mathEquation);
                         break;
                     case R.id.equals:
-                        mathEquation = calculatorLogic.equal(mathEquation);
+                        if(inputValidation.isEquationValid(mathEquation)) {
+                            mathEquation = calculatorLogic.equal(mathEquation);
+                        }
                         break;
                     case R.id.addition:
                         if(inputValidation.isOperationInputValid(mathEquation)){
